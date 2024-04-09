@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="stylesheet" href="Styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filtro de Productos</title>
+    <script>
+        const productos = [
+            { nombre: 'Manzana', categoria: 'Fruta' },
+            { nombre: 'Pera', categoria: 'Fruta' },
+            { nombre: 'lechuga', categoria: 'verdura' },
+            { nombre: 'pepino', categoria: 'verdura' },
+            { nombre: 'platano', categoria: 'Fruta' },
+            { nombre: 'durazno', categoria: 'Fruta' },
+            { nombre: 'sandia', categoria: 'Fruta' },
+            { nombre: 'brocoli', categoria: 'verdura' },
+            { nombre: 'rucula', categoria: 'verdura' },
+            { nombre: 'limon', categoria: 'Fruta' },
+        ];
+
+        function filtrarProductos() {
+            const filtro = document.getElementById('filtroInput').value.toLowerCase();
+            const categoria = document.getElementById('categoriaSelect').value.toLowerCase();
+
+            const resultados = productos.filter(producto => {
+                const cumpleFiltro = producto.nombre.toLowerCase().includes(filtro) && (categoria === '' || producto.categoria.toLowerCase() === categoria);
+                return cumpleFiltro;
+            });
+
+            const resultadosDiv = document.getElementById('resultados');
+            resultadosDiv.innerHTML = ''; // Limpiar resultados anteriores
+
+            resultados.forEach(producto => {
+                const productoDiv = document.createElement('div');
+                productoDiv.textContent = `${producto.nombre} - ${producto.categoria}`;
+                resultadosDiv.appendChild(productoDiv);
+            });
+        }
+    </script>
+</head>
+<body>
+    <h1>Filtro de Productos</h1>
+    <input type="text" id="filtroInput" oninput="filtrarProductos()" placeholder="Buscar por nombre">
+    <select id="categoriaSelect" onchange="filtrarProductos()">
+        <option value="">Todas las categorías</option>
+        <option value="Fruta">Fruta</option>
+        <option value="Verdura">Verdura</option>
+    </select>
+    <div id="resultados">
+        <!-- Aquí se mostrarán los resultados del filtro -->
+    </div>
+</body>
+</html>

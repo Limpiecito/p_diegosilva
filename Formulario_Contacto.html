@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="stylesheet" href="Styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Contacto</title>
+    <script>
+        function enviarFormulario() {
+            const nombre = document.getElementById('nombre').value;
+            const correo = document.getElementById('correo').value;
+            const direccion = document.getElementById('direccion').value;
+            const comuna = document.getElementById('comuna').value;
+
+            
+            alert(`Nombre: ${nombre}\nCorreo: ${correo}\nDirección: ${direccion}\nComuna: ${comuna}`);
+            
+        }
+    </script>
+</head>
+<body>
+    <h1>Formulario de Contacto</h1>
+    <form onsubmit="event.preventDefault(); enviarFormulario()">
+        <input type="text" id="nombre" placeholder="Nombre">
+        <input type="email" id="correo" placeholder="Correo electrónico">
+        <input type="text" id="direccion" placeholder="Dirección">
+        <select id="comuna">
+            <option value="">Selecciona tu comuna</option>
+            <option value="Comuna 1">BUIN</option>
+            <option value="Comuna 2">TALCA</option>
+            <option value="Comuna 3">PAINE</option>
+            <option value="Comuna 4">LA REINA</option>
+            <option value="Comuna 5">MACUL</option>
+            <option value="Comuna 6">CURACAVI</option>
+            <option value="Comuna 7">MELIPILLA</option>
+            <option value="Comuna 8">PIRQUE</option>
+            <option value="Comuna 9">LA CISTERNA</option>
+            <option value="Comuna 10">COLINA</option>
+            
+        </select>
+        <button type="submit">Enviar</button>
+    </form>
+</body>
+</html>
